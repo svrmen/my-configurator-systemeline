@@ -1,36 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Конфигурация
+    // Обновлённая конфигурация цен
     const config = {
-        maxStraightLength: 3, // Максимальная длина без соединительного блока
+        maxStraightLength: 3,
         materials: {
             aluminum: {
                 straight: {
-                    '400': { pricePerMeter: 60420 },
-                    '500': { pricePerMeter: 60420 },
-                    '630': { pricePerMeter: 79800 },
-                    '800': { pricePerMeter: 100200 },
-                    '1000': { pricePerMeter: 120600 },
-                    '1250': { pricePerMeter: 150000 },
-                    '1600': { pricePerMeter: 199800 },
-                    '2000': { pricePerMeter: 249600 },
-                    '2500': { pricePerMeter: 312000 },
-                    '3200': { pricePerMeter: 390000 },
-                    '4000': { pricePerMeter: 487200 },
-                    '5000': { pricePerMeter: 609000 }
+                    '400': { pricePerMeter: 70680 },
+                    '500': { pricePerMeter: 70680 },
+                    '630': { pricePerMeter: 70680 },
+                    '800': { pricePerMeter: 70680 },
+                    '1000': { pricePerMeter: 81420 },
+                    '1250': { pricePerMeter: 101880 },
+                    '1600': { pricePerMeter: 130200 },
+                    '2000': { pricePerMeter: 162000 },
+                    '2500': { pricePerMeter: 206400 },
+                    '3200': { pricePerMeter: 264600 },
+                    '4000': { pricePerMeter: 331200 },
+                    '5000': { pricePerMeter: 413400 }
                 },
                 angle: {
-                    '400': { price: 13980 },
-                    '500': { price: 13980 },
-                    '630': { price: 16740 },
-                    '800': { price: 20220 },
-                    '1000': { price: 23700 },
-                    '1250': { price: 27180 },
-                    '1600': { price: 34020 },
-                    '2000': { price: 42540 },
-                    '2500': { price: 53160 },
-                    '3200': { price: 68220 },
-                    '4000': { price: 85260 },
-                    '5000': { price: 106560 }
+                    '400': { price: 16380 },
+                    '500': { price: 16380 },
+                    '630': { price: 16380 },
+                    '800': { price: 16380 },
+                    '1000': { price: 20220 },
+                    '1250': { price: 23100 },
+                    '1600': { price: 31740 },
+                    '2000': { price: 36540 },
+                    '2500': { price: 40380 },
+                    '3200': { price: 48060 },
+                    '4000': { price: 51960 },
+                    '5000': { price: 55860 }
                 },
                 tee: {
                     '400': { price: 18500 },
@@ -47,32 +47,32 @@ document.addEventListener('DOMContentLoaded', function() {
                     '5000': { price: 110000 }
                 },
                 transformer: {
-                    '400': { price: 457200 },
+                    '400': { price: 535200 },
                     '500': { price: 535200 },
-                    '630': { price: 642000 },
-                    '800': { price: 792600 },
-                    '1000': { price: 943200 },
-                    '1250': { price: 1179000 },
-                    '1600': { price: 1572000 },
-                    '2000': { price: 1965000 },
-                    '2500': { price: 2457000 },
-                    '3200': { price: 3144000 },
-                    '4000': { price: 3930000 },
-                    '5000': { price: 4914000 }
+                    '630': { price: 535200 },
+                    '800': { price: 535200 },
+                    '1000': { price: 621600 },
+                    '1250': { price: 754800 },
+                    '1600': { price: 825600 },
+                    '2000': { price: 957600 },
+                    '2500': { price: 1155600 },
+                    '3200': { price: 1902000 },
+                    '4000': { price: 2105400 },
+                    '5000': { price: 2235600 }
                 },
                 grsh: {
-                    '400': { price: 104340 },
-                    '500': { price: 109200 },
-                    '630': { price: 114360 },
-                    '800': { price: 119460 },
-                    '1000': { price: 124560 },
-                    '1250': { price: 129660 },
-                    '1600': { price: 134760 },
-                    '2000': { price: 139860 },
-                    '2500': { price: 144960 },
-                    '3200': { price: 150060 },
-                    '4000': { price: 155160 },
-                    '5000': { price: 160260 }
+                    '400': { price: 31740 },
+                    '500': { price: 31740 },
+                    '630': { price: 31740 },
+                    '800': { price: 31740 },
+                    '1000': { price: 41340 },
+                    '1250': { price: 48120 },
+                    '1600': { price: 46560 },
+                    '2000': { price: 80760 },
+                    '2500': { price: 101940 },
+                    '3200': { price: 113520 },
+                    '4000': { price: 130800 },
+                    '5000': { price: 152400 }
                 },
                 connector: {
                     '400': { price: 30360 },
@@ -101,38 +101,64 @@ document.addEventListener('DOMContentLoaded', function() {
                     '3200': { price: 6960 },
                     '4000': { price: 7860 },
                     '5000': { price: 9420 }
+                },
+                outlet: {
+                    '125': { price: 91560 },
+                    '160': { price: 91560 },
+                    '250': { price: 91560 },
+                    '400': { price: 188400 },
+                    '500': { price: 188400 },
+                    '630': { price: 188400 },
+                    '800': { price: 427800 },
+                    '1000': { price: 427800 },
+                    '1250': { price: 427800 },
+                    '1600': { price: 479400 }
+                },
+                cableTerminal: {
+                    '400': { price: 122400 },
+                    '500': { price: 122400 },
+                    '630': { price: 122400 },
+                    '800': { price: 122400 },
+                    '1000': { price: 136800 },
+                    '1250': { price: 156000 },
+                    '1600': { price: 178200 },
+                    '2000': { price: 201000 },
+                    '2500': { price: 242400 },
+                    '3200': { price: 277800 },
+                    '4000': { price: 305400 },
+                    '5000': { price: 366600 }
                 }
             },
             copper: {
                 straight: {
-                    '400': { pricePerMeter: 75300 },
-                    '500': { pricePerMeter: 85080 },
-                    '630': { pricePerMeter: 108600 },
-                    '800': { pricePerMeter: 135600 },
-                    '1000': { pricePerMeter: 162600 },
-                    '1250': { pricePerMeter: 198000 },
-                    '1600': { pricePerMeter: 259800 },
-                    '2000': { pricePerMeter: 321600 },
-                    '2500': { pricePerMeter: 402000 },
-                    '3200': { pricePerMeter: 502800 },
-                    '4000': { pricePerMeter: 628200 },
-                    '5000': { pricePerMeter: 785400 },
-                    '6300': { pricePerMeter: 950000 }
+                    '400': { pricePerMeter: 104100 },
+                    '500': { pricePerMeter: 117180 },
+                    '630': { pricePerMeter: 140400 },
+                    '800': { pricePerMeter: 168600 },
+                    '1000': { pricePerMeter: 210000 },
+                    '1250': { pricePerMeter: 259800 },
+                    '1600': { pricePerMeter: 343800 },
+                    '2000': { pricePerMeter: 431400 },
+                    '2500': { pricePerMeter: 534600 },
+                    '3200': { pricePerMeter: 691800 },
+                    '4000': { pricePerMeter: 949800 },
+                    '5000': { pricePerMeter: 1153800 },
+                    '6300': { pricePerMeter: 1794600 }
                 },
                 angle: {
-                    '400': { price: 13500 },
-                    '500': { price: 14520 },
-                    '630': { price: 15600 },
-                    '800': { price: 17700 },
-                    '1000': { price: 21840 },
-                    '1250': { price: 24960 },
-                    '1600': { price: 34260 },
-                    '2000': { price: 39420 },
-                    '2500': { price: 43620 },
-                    '3200': { price: 51900 },
-                    '4000': { price: 56100 },
-                    '5000': { price: 60300 },
-                    '6300': { price: 75000 }
+                    '400': { price: 71200 },
+                    '500': { price: 72200 },
+                    '630': { price: 79600 },
+                    '800': { price: 78780 },
+                    '1000': { price: 97740 },
+                    '1250': { price: 107460 },
+                    '1600': { price: 144000 },
+                    '2000': { price: 131400 },
+                    '2500': { price: 153600 },
+                    '3200': { price: 195000 },
+                    '4000': { price: 182400 },
+                    '5000': { price: 162000 },
+                    '6300': { price: 204600 }
                 },
                 tee: {
                     '400': { price: 17500 },
@@ -150,34 +176,34 @@ document.addEventListener('DOMContentLoaded', function() {
                     '6300': { price: 80000 }
                 },
                 transformer: {
-                    '400': { price: 706800 },
-                    '500': { price: 818400 },
-                    '630': { price: 1010400 },
-                    '800': { price: 1263000 },
-                    '1000': { price: 1515600 },
-                    '1250': { price: 1894200 },
-                    '1600': { price: 2526000 },
-                    '2000': { price: 3157200 },
-                    '2500': { price: 3946800 },
-                    '3200': { price: 5061600 },
-                    '4000': { price: 6327600 },
-                    '5000': { price: 7909200 },
-                    '6300': { price: 9500000 }
+                    '400': { price: 806400 },
+                    '500': { price: 806400 },
+                    '630': { price: 806400 },
+                    '800': { price: 806400 },
+                    '1000': { price: 807000 },
+                    '1250': { price: 945000 },
+                    '1600': { price: 1082400 },
+                    '2000': { price: 1219800 },
+                    '2500': { price: 1794000 },
+                    '3200': { price: 1977600 },
+                    '4000': { price: 2165400 },
+                    '5000': { price: 2398200 },
+                    '6300': { price: 3186600 }
                 },
                 grsh: {
-                    '400': { price: 102660 },
-                    '500': { price: 106740 },
-                    '630': { price: 110820 },
-                    '800': { price: 114900 },
-                    '1000': { price: 118980 },
-                    '1250': { price: 123060 },
-                    '1600': { price: 127140 },
-                    '2000': { price: 131220 },
-                    '2500': { price: 135300 },
-                    '3200': { price: 139380 },
-                    '4000': { price: 143460 },
-                    '5000': { price: 147540 },
-                    '6300': { price: 160000 }
+                    '400': { price: 22320 },
+                    '500': { price: 26580 },
+                    '630': { price: 29340 },
+                    '800': { price: 33420 },
+                    '1000': { price: 43500 },
+                    '1250': { price: 50640 },
+                    '1600': { price: 49020 },
+                    '2000': { price: 85020 },
+                    '2500': { price: 107280 },
+                    '3200': { price: 119460 },
+                    '4000': { price: 138000 },
+                    '5000': { price: 160200 },
+                    '6300': { price: 192600 }
                 },
                 connector: {
                     '400': { price: 33780 },
@@ -208,6 +234,33 @@ document.addEventListener('DOMContentLoaded', function() {
                     '4000': { price: 7500 },
                     '5000': { price: 9000 },
                     '6300': { price: 9000 }
+                },
+                outlet: {
+                    '125': { price: 91560 },
+                    '160': { price: 91560 },
+                    '250': { price: 91560 },
+                    '400': { price: 188400 },
+                    '500': { price: 188400 },
+                    '630': { price: 385800 },
+                    '800': { price: 427800 },
+                    '1000': { price: 427800 },
+                    '1250': { price: 427800 },
+                    '1600': { price: 479400 }
+                },
+                cableTerminal: {
+                    '400': { price: 110880 },
+                    '500': { price: 115260 },
+                    '630': { price: 118800 },
+                    '800': { price: 124200 },
+                    '1000': { price: 139200 },
+                    '1250': { price: 157800 },
+                    '1600': { price: 181200 },
+                    '2000': { price: 204000 },
+                    '2500': { price: 245400 },
+                    '3200': { price: 282000 },
+                    '4000': { price: 309600 },
+                    '5000': { price: 340800 },
+                    '6300': { price: 375000 }
                 }
             }
         },
@@ -216,13 +269,15 @@ document.addEventListener('DOMContentLoaded', function() {
             perAngle: 1,
             perTee: 1,
             perOutlet: 1,
-            perConnection: 1
+            perConnection: 1,
+            perCableTerminal: 1
         },
         fasteners: {
             perStraight: 1,
             perAngle: 1,
-            perTee: 3,
-            perOutlet: 3
+            perTee: 2,
+            perOutlet: 2,
+            perCableTerminal: 2
         }
     };
 
@@ -241,14 +296,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const materialSelect = document.getElementById('material');
     const mountingStepInput = document.getElementById('mounting-step');
     const errorMessage = document.querySelector('.error-message');
+    const startPointSelect = document.getElementById('start-point');
+    const endPointSelect = document.getElementById('end-point');
+    const exportExcelBtn = document.getElementById('export-excel');
+
+    // Глобальная переменная для хранения последних данных расчета
+    let lastCalculation = null;
 
     // Инициализация событий
     materialSelect.addEventListener('change', updateCurrentOptions);
+    startPointSelect.addEventListener('change', updateConnectionTypes);
+    endPointSelect.addEventListener('change', updateConnectionTypes);
     segmentsContainer.addEventListener('change', handleSegmentChange);
     addSegmentBtn.addEventListener('click', addSegment);
     removeSegmentBtn.addEventListener('click', removeSegment);
     totalLengthInput.addEventListener('change', distributeLengths);
     form.addEventListener('submit', calculateAndDraw);
+    exportExcelBtn.addEventListener('click', exportToExcel);
 
     // Обновление доступных токов при смене материала
     function updateCurrentOptions() {
@@ -257,6 +321,22 @@ document.addEventListener('DOMContentLoaded', function() {
             opt.style.display = isCopper ? 'block' : 'none';
         });
         if (!isCopper && currentSelect.value === '6300') currentSelect.value = '5000';
+        updateConnectionTypes();
+    }
+
+    // Обновление типов подключений в зависимости от материала
+    function updateConnectionTypes() {
+        const isCopper = materialSelect.value === 'copper';
+        const startPoint = startPointSelect.value;
+        const endPoint = endPointSelect.value;
+        
+        // Обновление конечных точек
+        Array.from(endPointSelect.options).forEach(option => {
+            if (option.value === 'cable') {
+                option.disabled = !isCopper;
+                if (!isCopper && endPoint === 'cable') endPointSelect.value = 'none';
+            }
+        });
     }
 
     // Обновление элементов управления для блоков
@@ -265,10 +345,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const directionGroup = segment.querySelector('.direction-group');
         const branchGroup = segment.querySelector('.branch-group');
         const outletGroup = segment.querySelector('.outlet-group');
+        const cableTerminalGroup = segment.querySelector('.cable-terminal-group');
         
         directionGroup.style.display = select.value !== 'none' ? 'block' : 'none';
         branchGroup.style.display = select.value === 'tee' ? 'block' : 'none';
         outletGroup.style.display = select.value === 'outlet' ? 'block' : 'none';
+        cableTerminalGroup && (cableTerminalGroup.style.display = select.value === 'cable-terminal' ? 'block' : 'none');
         segment.querySelector('.angle').disabled = select.value !== 'angle';
     }
 
@@ -335,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <input type="number" class="angle" min="0" max="90" value="90" disabled>
             </div>
             
-            <div class="branch-group" style="display: none;">
+            <div class="branch-group" style="display: none; margin-top: 10px; padding: 10px; background: #e8f4fc; border-radius: 4px;">
                 <h4>Ответвление:</h4>
                 <div class="input-group">
                     <label>Длина ответвления (м):</label>
@@ -347,12 +429,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         <option value="none">Нет</option>
                         <option value="transformer">Трансформатор</option>
                         <option value="grsh">ГРЩ</option>
+                        <option value="endcap">Концевая заглушка</option>
                     </select>
                 </div>
             </div>
             
-            <div class="outlet-group" style="display: none;">
-                <h4>Отводной блок:</h4>
+            <div class="outlet-group" style="display: none; margin-top: 10px; padding: 10px; background: #e0f7fa; border-radius: 4px;">
+                <h4>Отводной блок с выключателем:</h4>
                 <div class="input-group">
                     <label>Номинал блока (A):</label>
                     <select class="outlet-current">
@@ -390,6 +473,7 @@ document.addEventListener('DOMContentLoaded', function() {
         errorMessage.style.display = 'none';
         
         try {
+            const projectName = document.getElementById('project-name').value;
             const current = document.getElementById('current').value;
             const material = document.getElementById('material').value;
             const startPoint = document.getElementById('start-point').value;
@@ -401,9 +485,26 @@ document.addEventListener('DOMContentLoaded', function() {
             const segments = getSegmentsData();
             validateTotalLength(segments);
             
-            const { components, totalPrice } = calculateComponents(segments, current, material, startPoint, endPoint, mountingStep);
+            const { components, totalPrice } = calculateComponents(
+                segments, current, material, startPoint, endPoint, mountingStep
+            );
             displayResults(components, totalPrice, current, material, startPoint, endPoint, ip, fireproof, segments, mountingStep);
             drawBusbar(segments, startPoint, endPoint, mountingStep);
+            
+            // Сохраняем данные для экспорта
+            lastCalculation = {
+                projectName,
+                components,
+                totalPrice,
+                current,
+                material,
+                startPoint,
+                endPoint,
+                ip,
+                fireproof,
+                segments,
+                mountingStep
+            };
             
         } catch (error) {
             showError(error.message);
@@ -424,6 +525,9 @@ document.addEventListener('DOMContentLoaded', function() {
             } : null,
             outlet: segment.querySelector('.block-type').value === 'outlet' ? {
                 current: segment.querySelector('.outlet-current').value
+            } : null,
+            cableTerminal: segment.querySelector('.block-type').value === 'cable-terminal' ? {
+                type: segment.querySelector('.cable-type').value
             } : null
         }));
     }
@@ -437,7 +541,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Расчет компонентов и стоимости (исправленная логика)
+    // Расчет компонентов и стоимости
     function calculateComponents(segments, current, material, startPoint, endPoint, mountingStep) {
         const components = [];
         const materialConfig = config.materials[material];
@@ -448,7 +552,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (startPoint !== 'none') {
             const type = startPoint === 'transformer' ? 'трансформатору' : 'ГРЩ';
             const price = materialConfig[startPoint][current].price;
-            components.push({ type: `Блок подключения к ${type}`, price });
+            components.push({ 
+                type: `Блок подключения к ${type} (начальный)`, 
+                price 
+            });
             connectorCount += config.connectors.perConnection;
         }
 
@@ -456,16 +563,20 @@ document.addEventListener('DOMContentLoaded', function() {
         segments.forEach((segment, i) => {
             // Прямая секция
             const straightPrice = materialConfig.straight[current].pricePerMeter * segment.length;
-            components.push({ type: 'Прямая секция', length: segment.length, price: straightPrice });
+            components.push({ 
+                type: 'Прямая секция', 
+                length: segment.length, 
+                price: straightPrice 
+            });
 
-            // Соединительные блоки через каждые 3 метра (исправленная логика)
+            // Соединительные блоки для прямого участка
             const connectorsForStraight = Math.max(0, Math.ceil(segment.length / config.maxStraightLength) - 1);
             connectorCount += connectorsForStraight;
 
-            // Крепления для прямой секции
+            // Крепления для прямого участка
             fastenerCount += Math.ceil(segment.length / mountingStep);
 
-            // Блок после сегмента (если не последний)
+            // Блок после сегмента
             if (segment.blockType !== 'none' && i < segments.length - 1) {
                 connectorCount += config.connectors.perConnection;
 
@@ -477,7 +588,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     blockType = `Угловая секция (${segment.angle}°)`;
                     connectorCount += config.connectors.perAngle;
                     fastenerCount += config.fasteners.perAngle;
-                } else if (segment.blockType === 'tee') {
+                } 
+                else if (segment.blockType === 'tee') {
                     blockPrice = materialConfig.tee[current].price;
                     blockType = `Т-образный отвод`;
                     connectorCount += config.connectors.perTee;
@@ -486,27 +598,41 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Ответвление
                     if (segment.branch.length > 0) {
                         const branchPrice = materialConfig.straight[current].pricePerMeter * segment.branch.length;
-                        components.push({ type: 'Прямая секция ответвления', length: segment.branch.length, price: branchPrice });
+                        components.push({ 
+                            type: 'Прямая секция ответвления', 
+                            length: segment.branch.length, 
+                            price: branchPrice 
+                        });
+                        
                         fastenerCount += Math.ceil(segment.branch.length / mountingStep);
                         
                         if (segment.branch.endPoint !== 'none') {
                             const type = segment.branch.endPoint === 'transformer' ? 'трансформатору' : 'ГРЩ';
                             const price = materialConfig[segment.branch.endPoint][current].price;
-                            components.push({ type: `Блок подключения к ${type} (ответвление)`, price });
+                            components.push({ 
+                                type: `Блок подключения к ${type} (ответвление)`, 
+                                price 
+                            });
                             connectorCount += config.connectors.perConnection;
                         }
                     }
-                } else if (segment.blockType === 'outlet') {
-                    blockPrice = materialConfig.tee[current].price * 1.2;
+                } 
+                else if (segment.blockType === 'outlet') {
+                    blockPrice = materialConfig.outlet[segment.outlet.current].price;
                     blockType = `Отводной блок с выключателем ${segment.outlet.current}A`;
                     connectorCount += config.connectors.perOutlet;
                     fastenerCount += config.fasteners.perOutlet;
-                    components.push({ type: `Автоматический выключатель ${segment.outlet.current}A`, price: segment.outlet.current * 50 });
                 }
                 
-                components.push({ type: blockType, price: blockPrice });
+                components.push({ 
+                    type: blockType, 
+                    price: blockPrice 
+                });
+                
                 connectorCount += config.connectors.perConnection;
-            } else if (i < segments.length - 1) {
+            } 
+            else if (i < segments.length - 1) {
+                // Соединитель между прямыми сегментами
                 connectorCount += config.connectors.perConnection;
             }
         });
@@ -515,7 +641,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (endPoint !== 'none') {
             const type = endPoint === 'transformer' ? 'трансформатору' : 'ГРЩ';
             const price = materialConfig[endPoint][current].price;
-            components.push({ type: `Блок подключения к ${type} (конечный)`, price });
+            components.push({ 
+                type: `Блок подключения к ${type} (конечный)`, 
+                price 
+            });
             connectorCount += config.connectors.perConnection;
         }
 
@@ -546,11 +675,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const connectorItem = components.find(c => c.type === 'Соединительные блоки');
         const fastenerItem = components.find(c => c.type === 'Крепления');
         
+        // Форматирование точек подключения
+        const formatPoint = (point) => {
+            if (point === 'transformer') return 'Трансформатор';
+            if (point === 'grsh') return 'ГРЩ';
+            if (point === 'endcap') return 'Концевая заглушка';
+            return 'Нет';
+        };
+        
         resultDiv.innerHTML = `
             <p><strong>Номинальный ток:</strong> ${current} A</p>
             <p><strong>Материал:</strong> ${material === 'aluminum' ? 'Алюминий' : 'Медь'}</p>
-            <p><strong>Начальная точка:</strong> ${startPoint === 'transformer' ? 'Трансформатор' : startPoint === 'grsh' ? 'ГРЩ' : 'Нет'}</p>
-            <p><strong>Конечная точка:</strong> ${endPoint === 'transformer' ? 'Трансформатор' : endPoint === 'grsh' ? 'ГРЩ' : 'Нет'}</p>
+            <p><strong>Начальная точка:</strong> ${formatPoint(startPoint)}</p>
+            <p><strong>Конечная точка:</strong> ${formatPoint(endPoint)}</p>
             <p><strong>Общая длина:</strong> ${totalLength.toFixed(1)} м</p>
             <p><strong>Количество сегментов:</strong> ${segments.length}</p>
             <p><strong>Шаг креплений:</strong> ${mountingStep} м</p>
@@ -580,32 +717,54 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
 
-    // Отрисовка шинопровода
+    // Отрисовка шинопровода с исправленными направлениями
     function drawBusbar(segments, startPoint, endPoint, mountingStep) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         const scale = 30;
         const busbarHeight = 12;
         const colors = {
             busbar: '#3498db', transformer: '#8e44ad', grsh: '#e67e22',
-            connector: '#2c3e50', angle: '#e74c3c', tee: '#2ecc71',
-            outlet: '#f39c12', branch: '#9b59b6', fastener: '#27ae60', text: '#2c3e50'
+            connector: '#808080', angle: '#e74c3c', tee: '#2ecc71',
+            outlet: '#f39c12', branch: '#9b59b6', fastener: '#e74c3c', text: '#2c3e50'
         };
 
-        // Вспомогательные функции рисования
+        // Функция рисования трансформатора или ГРЩ с черной окантовкой и полным названием
         function drawDevice(x, y, type) {
-            const size = 60;
+            const width = type === 'transformer' ? 100 : 60;
+            const height = 40;
+            
+            // Рисуем основную часть
             ctx.fillStyle = type === 'transformer' ? colors.transformer : colors.grsh;
-            ctx.fillRect(x, y - size/2, size, type === 'grsh' ? size*1.5 : size);
-            ctx.fillStyle = 'white';
-            ctx.font = 'bold 12px Arial';
+            ctx.fillRect(x - width/2, y - height/2, width, height);
+            
+            // Черная окантовка
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(x - width/2, y - height/2, width, height);
+            
+            // Текст внутри
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 10px Arial';
             ctx.textAlign = 'center';
-            ctx.fillText(type === 'transformer' ? 'ТРАНСФОРМАТОР' : 'ГРЩ', x + size/2, y);
-            return { x: x + size + 20, y };
+            ctx.textBaseline = 'middle';
+            
+            if (type === 'transformer') {
+                // Разбиваем текст на две строки
+                ctx.fillText('ТРАНСФОР', x, y - 7);
+                ctx.fillText('МАТОР', x, y + 7);
+            } else {
+                ctx.fillText('ГРЩ', x, y);
+            }
+            
+            return { x, y };
         }
 
+        // Функция рисования прямой секции
         function drawSegment(x, y, length, direction, color = colors.busbar) {
             const endX = x + length * scale * direction.x;
             const endY = y + length * scale * direction.y;
+            
+            // Рисуем шинопровод
             ctx.beginPath();
             ctx.moveTo(x, y);
             ctx.lineTo(endX, endY);
@@ -613,54 +772,96 @@ document.addEventListener('DOMContentLoaded', function() {
             ctx.strokeStyle = color;
             ctx.stroke();
             
+            // Подпись длины
             if (length >= 1) {
                 ctx.fillStyle = colors.text;
                 ctx.font = '12px Arial';
                 ctx.fillText(`${length.toFixed(1)} м`, (x + endX)/2 - 20, (y + endY)/2 - 10);
             }
+            
             return { x: endX, y: endY };
         }
 
+        // Функция рисования соединительного блока (квадратный, серый)
         function drawConnector(x, y) {
-            ctx.beginPath();
-            ctx.arc(x, y, busbarHeight/2 + 2, 0, Math.PI * 2);
+            const size = 12;
             ctx.fillStyle = colors.connector;
-            ctx.fill();
+            ctx.fillRect(x - size/2, y - size/2, size, size);
         }
 
-        function drawFastener(x, y) {
+        // Функция рисования крепления (красная линия поперек шинопровода)
+        function drawFastener(x, y, direction) {
+            const length = 20;
+            
+            // Вычисляем перпендикулярное направление
+            let perpDirection = { x: -direction.y, y: direction.x };
+            
+            // Рисуем линию
             ctx.beginPath();
-            ctx.arc(x, y, 4, 0, Math.PI * 2);
-            ctx.fillStyle = colors.fastener;
-            ctx.fill();
-        }
-
-        function drawTurn(x, y, angle, direction) {
-            ctx.beginPath();
-            ctx.arc(x, y, busbarHeight + 5, 0, Math.PI * 2);
-            ctx.strokeStyle = colors.angle;
-            ctx.lineWidth = 2;
+            ctx.moveTo(x - perpDirection.x * length/2, y - perpDirection.y * length/2);
+            ctx.lineTo(x + perpDirection.x * length/2, y + perpDirection.y * length/2);
+            ctx.strokeStyle = colors.fastener;
+            ctx.lineWidth = 3;
             ctx.stroke();
+        }
+
+        // Функция рисования угла 90 градусов (исправленные направления)
+        function drawTurn(x, y, angle, direction, currentDir) {
+            let newDir = currentDir;
+            
+            // Определяем новое направление на основе выбора пользователя
+            switch(direction) {
+                case 'right': 
+                    // Поворот направо: (x, y) -> (y, -x)
+                    newDir = { x: currentDir.y, y: -currentDir.x };
+                    break;
+                case 'left': 
+                    // Поворот налево: (x, y) -> (-y, x)
+                    newDir = { x: -currentDir.y, y: currentDir.x };
+                    break;
+                case 'up': 
+                    // Поворот вверх: (x, y) -> (0, -1)
+                    newDir = { x: 0, y: -1 };
+                    break;
+                case 'down': 
+                    // Поворот вниз: (x, y) -> (0, 1)
+                    newDir = { x: 0, y: 1 };
+                    break;
+            }
+            
+            // Рисуем две линии для угла
+            ctx.beginPath();
+            // Первая часть угла (текущее направление)
+            ctx.moveTo(x - 15 * currentDir.x, y - 15 * currentDir.y);
+            ctx.lineTo(x, y);
+            // Вторая часть угла (новое направление)
+            ctx.lineTo(x + 15 * newDir.x, y + 15 * newDir.y);
+            ctx.lineWidth = busbarHeight;
+            ctx.strokeStyle = colors.busbar;
+            ctx.stroke();
+            
+            // Крепления
+            drawFastener(x, y, currentDir);
+            drawFastener(x, y, newDir);
+            
+            // Подпись угла
             ctx.fillStyle = colors.angle;
             ctx.font = 'bold 14px Arial';
             ctx.fillText(`${angle}°`, x + 20, y - 10);
             
-            switch(direction) {
-                case 'right': return { x: 1, y: 0 };
-                case 'left': return { x: -1, y: 0 };
-                case 'up': return { x: 0, y: -1 };
-                case 'down': return { x: 0, y: 1 };
-                default: return { x: 1, y: 0 };
-            }
+            return newDir;
         }
 
+        // Функция рисования Т-образного отвода
         function drawTee(x, y, direction, branchLength) {
+            // Рисуем центральный узел
             ctx.beginPath();
             ctx.arc(x, y, 10, 0, Math.PI * 2);
             ctx.fillStyle = colors.tee;
             ctx.fill();
             
-            let branchDir = {x: 0, y: 0};
+            // Определяем направление ответвления
+            let branchDir;
             switch(direction) {
                 case 'right': branchDir = {x: 1, y: 0}; break;
                 case 'left': branchDir = {x: -1, y: 0}; break;
@@ -668,29 +869,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 case 'down': branchDir = {x: 0, y: 1}; break;
             }
             
+            // Рисуем ответвление
             drawSegment(x, y, branchLength, branchDir, colors.branch);
+            
+            // Подпись
             ctx.fillStyle = colors.text;
             ctx.font = 'bold 12px Arial';
             ctx.fillText('Т-отвод', x - 20, y - 15);
         }
 
+        // Функция рисования отводного блока
         function drawOutlet(x, y, current) {
             const size = 20;
-            ctx.beginPath();
-            ctx.arc(x, y, size/2, 0, Math.PI * 2);
+            // Рисуем блок
             ctx.fillStyle = colors.outlet;
-            ctx.fill();
-            ctx.fillStyle = '#fff';
             ctx.fillRect(x - size/2, y - size/2, size, size);
-            ctx.strokeStyle = colors.outlet;
-            ctx.lineWidth = 2;
+            
+            // Черная окантовка
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 1;
             ctx.strokeRect(x - size/2, y - size/2, size, size);
-            ctx.fillStyle = colors.text;
+            
+            // Текст
+            ctx.fillStyle = '#fff';
             ctx.font = 'bold 10px Arial';
             ctx.textAlign = 'center';
-            ctx.fillText(current + 'A', x, y + 3);
-            ctx.font = 'bold 12px Arial';
-            ctx.fillText('Отвод', x, y - 15);
+            ctx.textBaseline = 'middle';
+            ctx.fillText(current + 'A', x, y);
         }
 
         // Основной цикл рисования
@@ -700,9 +905,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Начальная точка
         if (startPoint !== 'none') {
             const pos = drawDevice(x, y, startPoint);
-            x = pos.x; y = pos.y;
+            // Подключаемся прямо к центру устройства без отступа
+            x = pos.x;
+            y = pos.y;
             drawConnector(x, y);
-            x += 15 * direction.x; y += 15 * direction.y;
         }
 
         // Обработка сегментов
@@ -714,54 +920,46 @@ document.addEventListener('DOMContentLoaded', function() {
             // Крепления
             const fastenerCount = Math.floor(segment.length / mountingStep);
             for (let j = 1; j <= fastenerCount; j++) {
-                const fx = x - (segment.length - j*mountingStep) * scale * direction.x;
-                const fy = y - (segment.length - j*mountingStep) * scale * direction.y;
-                drawFastener(fx, fy);
+                const fx = x - (segment.length - j * mountingStep) * scale * direction.x;
+                const fy = y - (segment.length - j * mountingStep) * scale * direction.y;
+                drawFastener(fx, fy, direction);
             }
 
-            // Соединительные блоки (через каждые 3 метра)
+            // Соединительные блоки
             const connectorCount = Math.ceil(segment.length / config.maxStraightLength) - 1;
             for (let j = 1; j <= connectorCount; j++) {
-                const cx = x - (segment.length - j*config.maxStraightLength) * scale * direction.x;
-                const cy = y - (segment.length - j*config.maxStraightLength) * scale * direction.y;
+                const cx = x - (segment.length - j * config.maxStraightLength) * scale * direction.x;
+                const cy = y - (segment.length - j * config.maxStraightLength) * scale * direction.y;
                 drawConnector(cx, cy);
             }
 
             // Блок после сегмента
             if (segment.blockType !== 'none' && i < segments.length - 1) {
                 drawConnector(x, y);
-                x += 15 * direction.x; y += 15 * direction.y;
 
                 if (segment.blockType === 'angle') {
-                    direction = drawTurn(x, y, segment.angle, segment.direction);
-                    drawFastener(x - 10, y - 10);
-                    drawFastener(x + 10, y + 10);
+                    direction = drawTurn(x, y, segment.angle, segment.direction, direction);
                 } else if (segment.blockType === 'tee') {
                     drawTee(x, y, segment.direction, segment.branch.length);
-                    drawFastener(x - 15, y);
-                    drawFastener(x + 15, y);
-                    drawFastener(x, y + 15);
                 } else if (segment.blockType === 'outlet') {
                     drawOutlet(x, y, segment.outlet.current);
-                    drawFastener(x - 15, y);
-                    drawFastener(x + 15, y);
-                    drawFastener(x, y + 15);
                 }
-
-                x += 15 * direction.x; y += 15 * direction.y;
-                drawConnector(x, y);
-                x += 15 * direction.x; y += 15 * direction.y;
-            } else if (i < segments.length - 1) {
-                drawConnector(x, y);
-                x += 15 * direction.x; y += 15 * direction.y;
             }
         });
 
         // Конечная точка
         if (endPoint !== 'none') {
             drawConnector(x, y);
-            x += 15 * direction.x; y += 15 * direction.y;
-            drawDevice(x, y, endPoint);
+            if (endPoint === 'endcap') {
+                // Концевая заглушка
+                ctx.fillStyle = '#2c3e50';
+                ctx.beginPath();
+                ctx.arc(x, y, 10, 0, Math.PI * 2);
+                ctx.fill();
+            } else {
+                // Подключаемся прямо к центру устройства без отступа
+                drawDevice(x, y, endPoint);
+            }
         }
 
         // Автомасштабирование
@@ -773,4 +971,76 @@ document.addEventListener('DOMContentLoaded', function() {
             drawBusbar(segments, startPoint, endPoint, mountingStep);
         }
     }
+
+    // Функция экспорта в Excel
+    function exportToExcel() {
+        if (!lastCalculation) {
+            showError('Сначала выполните расчет');
+            return;
+        }
+        
+        const { projectName, components, totalPrice, current, material, ip, fireproof } = lastCalculation;
+        
+        // Форматирование данных для Excel
+        const data = [
+            [`Наименование проекта:`, projectName, "", "", "", ""],
+            ["1) Данная спецификация может быть использована для формирования бюджета на закупку шинопровода, но не может быть использована для размещения заказа.", "", "", "", "", ""],
+            ["2) Спецификация является упрощенной и может корректироваться с получением дополнительных исходных данных. Разница между бюджетной оценкой и заказной спецификацией может достигать 5% в большую или меньшую сторону.", "", "", "", "", ""],
+            ["3) В случае размещения заказа необходимо подготовить трассы шинопровода, получить заказную спецификацию с поэлементным перечнем трассы и запрос КП через Центр Поддержки Клиентов: support@systeme.ru", "", "", "", "", ""],
+            ["", "", "", "", "ИТОГО:", totalPrice.toLocaleString('ru-RU', {minimumFractionDigits: 2, maximumFractionDigits: 2})],
+            [],
+            ["", `Шинопровод МГ - SystemeLine BDW ${current}A 3L+N+PE (шина ${material === 'aluminum' ? 'AL' : 'Cu'}), ${material === 'aluminum' ? 'Алюминий' : 'Медь'}, ${ip}${fireproof === 'yes' ? ', огнестойкое исполнение' : ''}`],
+            [],
+            ["Референс", "Описание", "Количество", "Ед. изм.", "Тариф, руб. без НДС, от " + new Date().toLocaleDateString('ru-RU'), "Сумма, руб. без НДС"]
+        ];
+
+        // Добавление компонентов
+        components.forEach(comp => {
+            let quantity = comp.quantity || 1;
+            let unit = comp.length ? 'метр' : 'штука';
+            let unitPrice = comp.price;
+            
+            if (comp.length) {
+                quantity = comp.length;
+                unitPrice = (comp.price / comp.length).toFixed(2);
+            } else if (comp.quantity) {
+                unitPrice = (comp.price / comp.quantity).toFixed(2);
+            } else {
+                unitPrice = comp.price.toFixed(2);
+            }
+
+            data.push([
+                "",
+                comp.type,
+                quantity,
+                unit,
+                unitPrice,
+                comp.price.toLocaleString('ru-RU', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+            ]);
+        });
+
+        // Создание книги Excel
+        const ws = XLSX.utils.aoa_to_sheet(data);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Спецификация");
+        
+        // Объединение ячеек для заголовка
+        if (!ws['!merges']) ws['!merges'] = [];
+        ws['!merges'].push(
+            // Наименование проекта
+            {s: {r: 0, c: 0}, e: {r: 0, c: 5}},
+            // Примечания
+            {s: {r: 1, c: 0}, e: {r: 1, c: 5}},
+            {s: {r: 2, c: 0}, e: {r: 2, c: 5}},
+            {s: {r: 3, c: 0}, e: {r: 3, c: 5}},
+            // Заголовок шинопровода
+            {s: {r: 6, c: 1}, e: {r: 6, c: 5}}
+        );
+        
+        // Экспорт файла
+        XLSX.writeFile(wb, `Спецификация_${projectName || 'шинопровода'}.xlsx`);
+    }
+
+    // Инициализация
+    updateCurrentOptions();
 });
