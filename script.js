@@ -728,10 +728,14 @@ document.addEventListener('DOMContentLoaded', function() {
             outlet: '#f39c12', branch: '#9b59b6', fastener: '#e74c3c', text: '#2c3e50'
         };
 
-        // Функция рисования трансформатора или ГРЩ с черной окантовкой и полным названием
-        function drawDevice(x, y, type) {
+        // Функция рисования трансформатора или ГРЩ с черной окантовкой
+        function drawDevice(x, y, type, isStart) {
             const width = type === 'transformer' ? 100 : 60;
             const height = 40;
+            
+            // Определяем точку подключения на краю устройства
+            const connectionX = isStart ? x + width/2 : x - width/2;
+            const connectionY = y;
             
             // Рисуем основную часть
             ctx.fillStyle = type === 'transformer' ? colors.transformer : colors.grsh;
@@ -749,14 +753,13 @@ document.addEventListener('DOMContentLoaded', function() {
             ctx.textBaseline = 'middle';
             
             if (type === 'transformer') {
-                // Разбиваем текст на две строки
-                ctx.fillText('ТРАНСФОР', x, y - 7);
-                ctx.fillText('МАТОР', x, y + 7);
+                ctx.fillText('ТРАНСФОРМАТОР', x, y);
             } else {
                 ctx.fillText('ГРЩ', x, y);
             }
             
-            return { x, y };
+            // Возвращаем точку подключения на краю устройства
+            return { x: connectionX, y: connectionY };
         }
 
         // Функция рисования прямой секции
@@ -904,18 +907,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Начальная точка
         if (startPoint !== 'none') {
-            const pos = drawDevice(x, y, startPoint);
-            // Подключаемся прямо к центру устройства без отступа
-            x = pos.x;
-            y = pos.y;
+            // Рисуем устройство и получаем точку подключения на его краю
+            const deviceCenterX = x;
+            const deviceCenterY = y;
+            const connectionPoint = drawDevice(deviceCenterX, deviceCenterY, startPoint, true);
+            
+            // Начинаем шинопровод с края устройства
+            x = connectionPoint.x;
+            y = connectionPoint.y;
+            
+            // Рисуем соединитель
             drawConnector(x, y);
+            
+            // Сдвигаемся от края устройства
+            x += 5 * direction.x;
+            y += 5 * direction.y;
         }
 
         // Обработка сегментов
         segments.forEach((segment, i) => {
             // Прямая секция
             const endPos = drawSegment(x, y, segment.length, direction);
-            x = endPos.x; y = endPos.y;
+            x = endPos.x; 
+            y = endPos.y;
 
             // Крепления
             const fastenerCount = Math.floor(segment.length / mountingStep);
@@ -949,17 +963,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Конечная точка
         if (endPoint !== 'none') {
+            // Рисуем соединитель в конце шинопровода
             drawConnector(x, y);
-            if (endPoint === 'endcap') {
-                // Концевая заглушка
-                ctx.fillStyle = '#2c3e50';
-                ctx.beginPath();
-                ctx.arc(x, y, 10, 0, Math.PI * 2);
-                ctx.fill();
-            } else {
-                // Подключаемся прямо к центру устройства без отступа
-                drawDevice(x, y, endPoint);
-            }
+            
+            // Сдвигаемся к краю устройства
+            x += 5 * direction.x;
+            y += 5 * direction.y;
+            
+            // Рисуем устройство и получаем точку подключения на его краю
+            const deviceCenterX = endPoint === 'endcap' ? x : x + 40 * direction.x;
+            const deviceCenterY = y;
+            drawDevice(deviceCenterX, deviceCenterY, endPoint, false);
         }
 
         // Автомасштабирование
@@ -1027,13 +1041,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Объединение ячеек для заголовка
         if (!ws['!merges']) ws['!merges'] = [];
         ws['!merges'].push(
-            // Наименование проекта
             {s: {r: 0, c: 0}, e: {r: 0, c: 5}},
-            // Примечания
             {s: {r: 1, c: 0}, e: {r: 1, c: 5}},
             {s: {r: 2, c: 0}, e: {r: 2, c: 5}},
             {s: {r: 3, c: 0}, e: {r: 3, c: 5}},
-            // Заголовок шинопровода
             {s: {r: 6, c: 1}, e: {r: 6, c: 5}}
         );
         
