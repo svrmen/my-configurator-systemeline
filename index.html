@@ -11,6 +11,11 @@
         <div class="configurator-form">
             <h1>Конфигуратор шинопровода Systemeline B</h1>
             
+            <div class="input-group">
+                <label for="project-name">Наименование проекта:</label>
+                <input type="text" id="project-name" placeholder="Введите название проекта" required>
+            </div>
+            
             <div class="input-section">
                 <form id="busbar-form">
                     <div class="error-message"></div>
@@ -168,6 +173,10 @@
                     <div id="calculation-result"></div>
                     <div id="components-list"></div>
                     <div id="total-price"></div>
+                    
+                    <div class="input-group" style="margin-top: 20px;">
+                        <button type="button" id="export-excel">Выгрузить в Excel</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -178,6 +187,7 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
