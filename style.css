@@ -1,45 +1,44 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
     margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-    height: 100vh;
+    padding: 20px;
+    color: #333;
 }
 
 .configurator-container {
     display: flex;
-    height: 100%;
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.configurator-form {
-    width: 40%;
-    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
     background: white;
-    overflow-y: auto;
-    box-sizing: border-box;
-    height: 100%;
-    border-right: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
+/* Уменьшена ширина левой части на 10% */
+.configurator-form {
+    width: 45%;
+    padding: 25px;
+    background: #fff;
+    border-right: 1px solid #eaeaea;
+}
+
+/* Увеличена ширина правой части */
 .drawing-section {
-    width: 60%;
-    padding: 20px;
-    box-sizing: border-box;
-    height: 100%;
+    width: 55%;
+    padding: 25px;
     background: #f9f9f9;
-    display: flex;
-    flex-direction: column;
+    min-height: 100%;
 }
 
 h1 {
     color: #2c3e50;
+    margin-top: 0;
+    font-size: 24px;
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.5em;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #3498db;
 }
 
 h3 {
@@ -47,174 +46,178 @@ h3 {
     margin-top: 0;
 }
 
-.input-section, .output-section {
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+.input-section {
+    margin-bottom: 25px;
 }
 
 .input-group {
-    margin-bottom: 12px;
+    margin-bottom: 18px;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 0.9em;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
 }
 
-select, input {
+input[type="number"],
+select {
     width: 100%;
-    padding: 8px;
+    padding: 12px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-size: 16px;
     box-sizing: border-box;
-    font-size: 0.9em;
+    transition: border-color 0.3s;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type="number"]:focus,
+select:focus,
+input[type="text"]:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
 button {
     background: #3498db;
     color: white;
     border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
+    padding: 12px 18px;
+    border-radius: 6px;
     cursor: pointer;
-    margin-right: 8px;
-    font-size: 0.9em;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background 0.3s;
+    margin-right: 10px;
 }
 
 button:hover {
     background: #2980b9;
 }
 
-#add-segment, #remove-segment {
-    background: #ecf0f1;
-    color: #2c3e50;
+#add-segment {
+    background: #27ae60;
+}
+
+#add-segment:hover {
+    background: #219653;
+}
+
+#remove-segment {
+    background: #e74c3c;
+}
+
+#remove-segment:hover {
+    background: #c0392b;
+}
+
+#export-excel {
+    background: #27ae60;
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+#export-excel:hover {
+    background: #219653;
 }
 
 .error-message {
-    color: #e74c3c;
-    background: #fadbd8;
-    padding: 8px;
-    border-radius: 5px;
-    margin-bottom: 12px;
+    background: #f8d7da;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
     display: none;
-    font-size: 0.9em;
+    font-weight: 500;
 }
 
 .segment-input {
     background: #f8f9fa;
-    padding: 12px;
-    border-radius: 5px;
-    margin-bottom: 12px;
-    border-left: 4px solid #3498db;
+    padding: 18px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    border: 1px solid #eaeaea;
     position: relative;
 }
 
 .segment-input label {
-    display: inline-block;
-    width: 160px;
-    margin-right: 8px;
+    font-weight: 500;
 }
 
-.segment-input input, .segment-input select {
-    width: 120px;
-    margin-right: 10px;
-    display: inline-block;
+.branch-group,
+.outlet-group {
+    margin-top: 15px;
+    border-radius: 6px;
+    padding: 15px;
 }
 
-.direction-group {
-    margin-top: 8px;
-    padding: 8px;
+.branch-group {
     background: #e8f4fc;
-    border-radius: 4px;
-    border-left: 3px solid #3498db;
 }
 
-.direction-group label {
-    display: inline-block;
-    width: auto;
-    margin-right: 8px;
-}
-
-.direction-group select, 
-.direction-group input {
-    width: 120px;
-    min-width: 80px;
-    display: inline-block;
-}
-
-.angle-label {
-    margin-left: 10px;
-}
-
-.branch-group, .outlet-group {
-    margin-top: 10px;
-    padding: 10px;
+.outlet-group {
     background: #e0f7fa;
-    border-radius: 4px;
-    border-left: 3px solid #00bcd4;
+}
+
+.output-section {
+    margin-top: 25px;
 }
 
 .result-box {
     background: #f8f9fa;
-    padding: 12px;
-    border-radius: 5px;
-    margin-bottom: 15px;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #eaeaea;
+}
+
+#calculation-result p {
+    margin: 10px 0;
+    line-height: 1.5;
 }
 
 #components-list {
-    margin-top: 12px;
-    max-height: 300px;
-    overflow-y: auto;
-    font-size: 0.9em;
+    margin-top: 20px;
 }
 
 .component-item {
     display: flex;
     justify-content: space-between;
-    padding: 6px 0;
+    padding: 12px 0;
     border-bottom: 1px solid #eee;
-    font-size: 0.9em;
+    font-size: 15px;
+}
+
+.component-item:last-child {
+    border-bottom: none;
 }
 
 #total-price {
-    font-weight: bold;
-    font-size: 1em;
-    margin-top: 12px;
-    padding: 8px;
-    background: #e8f4fc;
-    border-radius: 4px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #3498db;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
 }
 
 #busbar-canvas {
-    width: 100%;
-    flex-grow: 1;
-    border: 1px solid #ddd;
-    border-radius: 4px;
     background: white;
-    margin-top: 10px;
-}
-
-.copper-only {
-    display: none;
-}
-
-@media (max-width: 1200px) {
-    .configurator-container {
-        flex-direction: column;
-        height: auto;
-    }
-    
-    .configurator-form, .drawing-section {
-        width: 100%;
-        height: auto;
-    }
-    
-    .drawing-section {
-        min-height: 500px;
-    }
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
