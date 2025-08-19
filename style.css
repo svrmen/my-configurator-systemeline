@@ -237,3 +237,32 @@ button:hover {
     width: 100%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.brand {
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: bold;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.brand-systeme {
+    color: #2c3e50;
+}
+
+.brand-electric {
+    color: #27ae60; /* фирменный зеленый */
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
