@@ -1,11 +1,26 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f7fa;
-    margin: 0;
-    padding: 20px;
-    color: #333;
+/* ==============================
+   Корпоративные стили Systeme Electric
+   ============================== */
+
+:root {
+    --primary-green: #009E4D;       /* основной фирменный зелёный */
+    --light-green-bg: #E8F5E9;      /* мягкий светлый фон */
+    --dark-green-hover: #007a3e;    /* hover для кнопок */
+    --accent-blue: #3498db;         /* вторичный акцент */
+    --text-color: #2c3e50;          /* тёмно-серый текст */
+    --font-family: 'Segoe UI', 'Roboto', 'Open Sans', Tahoma, sans-serif;
 }
 
+/* Базовые стили */
+body {
+    font-family: var(--font-family);
+    background-color: var(--light-green-bg);
+    margin: 0;
+    padding: 20px;
+    color: var(--text-color);
+}
+
+/* Контейнер конфигуратора */
 .configurator-container {
     display: flex;
     max-width: 1400px;
@@ -16,15 +31,15 @@ body {
     overflow: hidden;
 }
 
-/* Уменьшена ширина левой части на 10% */
+/* Левая часть (форма) */
 .configurator-form {
     width: 45%;
     padding: 25px;
     background: #fff;
-    border-right: 1px solid #eaeaea;
+    border-right: 3px solid var(--primary-green);
 }
 
-/* Увеличена ширина правой части */
+/* Правая часть (чертёж) */
 .drawing-section {
     width: 55%;
     padding: 25px;
@@ -32,20 +47,22 @@ body {
     min-height: 100%;
 }
 
+/* Заголовки */
 h1 {
-    color: #2c3e50;
+    color: var(--text-color);
     margin-top: 0;
-    font-size: 24px;
+    font-size: 26px;
     text-align: center;
     padding-bottom: 15px;
-    border-bottom: 2px solid #3498db;
+    border-bottom: 3px solid var(--primary-green);
 }
 
 h3 {
-    color: #2c3e50;
+    color: var(--text-color);
     margin-top: 0;
 }
 
+/* Блоки ввода */
 .input-section {
     margin-bottom: 25px;
 }
@@ -58,10 +75,12 @@ label {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
-    color: #2c3e50;
+    color: var(--text-color);
 }
 
+/* Поля ввода */
 input[type="number"],
+input[type="text"],
 select {
     width: 100%;
     padding: 12px;
@@ -69,29 +88,19 @@ select {
     border-radius: 6px;
     font-size: 16px;
     box-sizing: border-box;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-input[type="text"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    box-sizing: border-box;
-    transition: border-color 0.3s;
-}
-
-input[type="number"]:focus,
-select:focus,
-input[type="text"]:focus {
-    border-color: #3498db;
+input:focus,
+select:focus {
+    border-color: var(--primary-green);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    box-shadow: 0 0 0 2px rgba(0, 158, 77, 0.25);
 }
 
+/* Кнопки */
 button {
-    background: #3498db;
+    background: var(--primary-green);
     color: white;
     border: none;
     padding: 12px 18px;
@@ -99,18 +108,19 @@ button {
     cursor: pointer;
     font-size: 15px;
     font-weight: 600;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
     margin-right: 10px;
 }
 
 button:hover {
-    background: #2980b9;
+    background: var(--dark-green-hover);
+    transform: translateY(-2px);
 }
 
+/* Специальные кнопки */
 #add-segment {
     background: #27ae60;
 }
-
 #add-segment:hover {
     background: #219653;
 }
@@ -118,23 +128,22 @@ button:hover {
 #remove-segment {
     background: #e74c3c;
 }
-
 #remove-segment:hover {
     background: #c0392b;
 }
 
 #export-excel {
-    background: #27ae60;
+    background: var(--primary-green);
     width: 100%;
     padding: 15px;
     font-size: 16px;
     margin-top: 15px;
 }
-
 #export-excel:hover {
-    background: #219653;
+    background: var(--dark-green-hover);
 }
 
+/* Ошибки */
 .error-message {
     background: #f8d7da;
     color: #721c24;
@@ -145,12 +154,13 @@ button:hover {
     font-weight: 500;
 }
 
+/* Сегменты */
 .segment-input {
     background: #f8f9fa;
     padding: 18px;
     border-radius: 8px;
     margin-bottom: 18px;
-    border: 1px solid #eaeaea;
+    border: 2px solid var(--primary-green);
     position: relative;
 }
 
@@ -173,6 +183,7 @@ button:hover {
     background: #e0f7fa;
 }
 
+/* Результаты */
 .output-section {
     margin-top: 25px;
 }
@@ -181,12 +192,16 @@ button:hover {
     background: #f8f9fa;
     border-radius: 8px;
     padding: 20px;
-    border: 1px solid #eaeaea;
+    border: 2px solid var(--primary-green);
 }
 
 #calculation-result p {
     margin: 10px 0;
     line-height: 1.5;
+}
+
+#calculation-result p strong {
+    color: var(--primary-green);
 }
 
 #components-list {
@@ -208,16 +223,17 @@ button:hover {
 #total-price {
     margin-top: 20px;
     padding-top: 20px;
-    border-top: 2px solid #3498db;
+    border-top: 3px solid var(--primary-green);
     font-size: 18px;
     font-weight: 600;
-    color: #2c3e50;
+    color: var(--text-color);
 }
 
+/* Чертёж */
 #busbar-canvas {
-    background: white;
-    border: 1px solid #ddd;
+    background: #fff;
+    border: 2px solid var(--primary-green);
     border-radius: 8px;
     width: 100%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
