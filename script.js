@@ -1,9 +1,8 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // =========================
-  // КОНФИГ (цены и нормы)
-  // =========================
+document.addEventListener('DOMContentLoaded', () => {
+  // ================= CONFIG (с тарифами) =================
   const config = {
-    maxStraightLength: 3, // м: шаг внутреннего соединителя для прямых (гор/верт)
+    maxStraightLength: 3, // м — соединитель каждые 3 м (гор/верт)
+
     materials: {
       aluminum: {
         straight: {
@@ -266,19 +265,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     },
+
     connectors: { perStraight: 1, perAngle: 1, perTee: 1, perOutlet: 1, perConnection: 1, perCableTerminal: 1 },
-    fasteners:  { perStraight: 1, perAngle: 1, perTee: 2, perOutlet: 2, perCableTerminal: 2 },
+    fasteners:  { perStraight: 1, perAngle: 1, perTee: 2, perOutlet: 2, perCableTerminal: 2 }
   };
-  // Заглушки цен
-  const getPricePerMeterStraight = () => 0;
-  const getPriceAngle = () => 0;
-  const getPriceTee = () => 0;
-  const getPriceTransformer = () => 0;
-  const getPriceGRSH = () => 0;
-  const getPriceConnector = () => 0;
-  const getPriceFastener = () => 0;
-  const getPriceOutlet = () => 0;
-  const getPriceCableTerminal = () => 0;
+
+  // Утилиты цен
+  const priceOr0 = (v) => (typeof v === 'number' && isFinite(v)) ? v : 0;
+  const getPricePerMeterStraight = (mat, curr) => priceOr0(config.materials[mat]?.straight?.[curr]?.pricePerMeter);
+  const getPriceAngle = (mat, curr) => priceOr0(config.materials[mat]?.angle?.[curr]?.price);
+  const getPriceTee = (mat, curr) => priceOr0(config.materials[mat]?.tee?.[curr]?.price);
+  const getPriceTransformer = (mat, curr) => priceOr0(config.materials[mat]?.transformer?.[curr]?.price);
+  const getPriceGRSH = (mat, curr) => priceOr0(config.materials[mat]?.grsh?.[curr]?.price);
+  const getPriceConnector = (mat, curr) => priceOr0(config.materials[mat]?.connector?.[curr]?.price);
+  const getPriceFastener = (mat, curr) => priceOr0(config.materials[mat]?.fastener?.[curr]?.price);
+  const getPriceOutlet = (mat, outletCurr) => priceOr0(config.materials[mat]?.outlet?.[outletCurr]?.price);
+  const getPriceCableTerminal = (mat, curr) => priceOr0(config.materials[mat]?.cableTerminal?.[curr]?.price);
 
   // ================= DOM =================
   const form = document.getElementById('busbar-form');
