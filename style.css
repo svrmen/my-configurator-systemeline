@@ -1,268 +1,149 @@
-/* ==============================
-   Корпоративные стили Systeme Electric
-   ============================== */
-
-:root {
-    --primary-green: #009E4D;       /* основной фирменный зелёный */
-    --light-green-bg: #E8F5E9;      /* мягкий светлый фон */
-    --dark-green-hover: #007a3e;    /* hover для кнопок */
-    --accent-blue: #3498db;         /* вторичный акцент */
-    --text-color: #2c3e50;          /* тёмно-серый текст */
-    --font-family: 'Segoe UI', 'Roboto', 'Open Sans', Tahoma, sans-serif;
+:root{
+  --primary-green:#009E4D;
+  --light-green-bg:#E8F5E9;
+  --dark-green-hover:#007a3e;
+  --accent-blue:#3498db;
+  --text-color:#2c3e50;
+  --font-family:'Segoe UI','Roboto','Open Sans',Tahoma,sans-serif;
 }
 
-/* Базовые стили */
-body {
-    font-family: var(--font-family);
-    background-color: var(--light-green-bg);
-    margin: 0;
-    padding: 20px;
-    color: var(--text-color);
+*{box-sizing:border-box}
+
+body{
+  font-family:var(--font-family);
+  background-color:var(--light-green-bg);
+  margin:0;
+  padding:20px;
+  color:var(--text-color);
 }
 
-/* Контейнер конфигуратора */
-.configurator-container {
-    display: flex;
-    max-width: 1400px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+.header{text-align:center;margin-bottom:20px}
+.brand{font-size:36px;line-height:1.2;font-weight:bold}
+.brand-systeme{color:#2c3e50}
+.brand-electric{color:#27ae60}
+
+/* Макет со сплиттером */
+.configurator-container{
+  display:grid;
+  grid-template-columns:560px 8px 1fr;
+  max-width:1800px;
+  height:calc(100vh - 180px);
+  margin:0 auto;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+  overflow:hidden;
 }
 
-/* Левая часть (форма) */
-.configurator-form {
-    width: 45%;
-    padding: 25px;
-    background: #fff;
-    border-right: 3px solid var(--primary-green);
+.configurator-form{
+  padding:25px;
+  border-right:3px solid var(--primary-green);
+  overflow:auto;
 }
 
-/* Правая часть (чертёж) */
-.drawing-section {
-    width: 55%;
-    padding: 25px;
-    background: #f9f9f9;
-    min-height: 100%;
+.splitter{
+  background:repeating-linear-gradient(90deg,#d0d0d0,#d0d0d0 1px,#e8e8e8 1px,#e8e8e8 4px);
+  cursor:col-resize;
+}
+.splitter.dragging{background:#c0c0c0}
+
+.drawing-section{
+  display:flex;
+  flex-direction:column;
+  min-width:320px;
+  background:#f9f9f9;
 }
 
-/* Заголовки */
-h1 {
-    color: var(--text-color);
-    margin-top: 0;
-    font-size: 26px;
-    text-align: center;
-    padding-bottom: 15px;
-    border-bottom: 3px solid var(--primary-green);
+/* Панель инструментов */
+.canvas-toolbar{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 12px;border-bottom:2px solid var(--primary-green);background:#fff;
+}
+.canvas-toolbar .mode-switch{display:flex;align-items:center;gap:6px;margin-right:10px}
+.canvas-toolbar .tools{display:flex;gap:6px}
+.tool-btn{
+  background:var(--primary-green);color:#fff;border:none;padding:8px 10px;border-radius:6px;cursor:pointer;
+  font-size:14px;font-weight:600;transition:background .2s, transform .1s;
+}
+.tool-btn:hover{background:var(--dark-green-hover);transform:translateY(-1px)}
+.tool-hint{margin-left:auto;font-size:12px;color:#667}
+
+/* Легенда высот */
+.legend{
+  display:flex;align-items:center;gap:16px;padding:8px 12px;background:#fff;border-bottom:1px solid #e8e8e8;
+}
+.legend .legend-title{font-weight:600}
+.legend .key{display:flex;align-items:center;gap:6px;font-size:13px;color:#555}
+.legend .key i{display:inline-block;width:14px;height:6px;border-radius:3px;background:#ccc}
+.legend .key[data-level="base"] i{background:#005BAC}
+.legend .key[data-level="above"] i{background:#78BE20}
+.legend .key[data-level="below"] i{background:#e67e22}
+
+/* Канвас */
+.canvas-wrapper{position:relative;flex:1 1 auto;min-height:360px;background:#fff}
+#busbar-canvas{
+  position:absolute; inset:0; width:100%; height:100%;
+  border-bottom:2px solid var(--primary-green);
+  box-shadow:inset 0 0 0 2px rgba(0,158,77,.2);
 }
 
-h3 {
-    color: var(--text-color);
-    margin-top: 0;
+/* Формы */
+.input-section{margin-bottom:25px}
+.input-group{margin-bottom:18px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+
+label{display:block;margin-bottom:8px;font-weight:600;color:var(--text-color)}
+input[type="number"],input[type="text"],select{
+  width:100%;padding:12px;border:1px solid #ddd;border-radius:6px;font-size:16px;
+  transition:border-color .3s, box-shadow .3s;
+}
+input:focus,select:focus{border-color:var(--primary-green);outline:none;box-shadow:0 0 0 2px rgba(0,158,77,.25)}
+
+button{
+  background:var(--primary-green);color:#fff;border:none;padding:12px 18px;border-radius:6px;cursor:pointer;
+  font-size:15px;font-weight:600;transition:background .2s, transform .1s;margin-right:10px;
+}
+button:hover{background:var(--dark-green-hover);transform:translateY(-2px)}
+#add-segment{background:#27ae60} #add-segment:hover{background:#219653}
+#remove-segment{background:#e74c3c} #remove-segment:hover{background:#c0392b}
+#export-excel{background:var(--primary-green);width:100%;padding:15px;font-size:16px;margin-top:15px}
+#export-excel:hover{background:var(--dark-green-hover)}
+
+/* Сообщение об ошибке */
+.error-message{
+  background:#f8d7da;color:#721c24;padding:12px;border-radius:6px;margin-bottom:20px;display:none;font-weight:500;
 }
 
-/* Блоки ввода */
-.input-section {
-    margin-bottom: 25px;
+/* Блоки сегментов */
+.segment-input{
+  background:#f8f9fa;padding:18px;border-radius:8px;margin-bottom:18px;border:2px solid var(--primary-green);position:relative;
 }
+.segment-input h4{margin:6px 0 8px 0}
+.outlined-dashed{border-style:dashed}
 
-.input-group {
-    margin-bottom: 18px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--text-color);
-}
-
-/* Поля ввода */
-input[type="number"],
-input[type="text"],
-select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    box-sizing: border-box;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-input:focus,
-select:focus {
-    border-color: var(--primary-green);
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 158, 77, 0.25);
-}
-
-/* Кнопки */
-button {
-    background: var(--primary-green);
-    color: white;
-    border: none;
-    padding: 12px 18px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    transition: background 0.3s, transform 0.2s;
-    margin-right: 10px;
-}
-
-button:hover {
-    background: var(--dark-green-hover);
-    transform: translateY(-2px);
-}
-
-/* Специальные кнопки */
-#add-segment {
-    background: #27ae60;
-}
-#add-segment:hover {
-    background: #219653;
-}
-
-#remove-segment {
-    background: #e74c3c;
-}
-#remove-segment:hover {
-    background: #c0392b;
-}
-
-#export-excel {
-    background: var(--primary-green);
-    width: 100%;
-    padding: 15px;
-    font-size: 16px;
-    margin-top: 15px;
-}
-#export-excel:hover {
-    background: var(--dark-green-hover);
-}
-
-/* Ошибки */
-.error-message {
-    background: #f8d7da;
-    color: #721c24;
-    padding: 12px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-    display: none;
-    font-weight: 500;
-}
-
-/* Сегменты */
-.segment-input {
-    background: #f8f9fa;
-    padding: 18px;
-    border-radius: 8px;
-    margin-bottom: 18px;
-    border: 2px solid var(--primary-green);
-    position: relative;
-}
-
-.segment-input label {
-    font-weight: 500;
-}
-
-.branch-group,
-.outlet-group {
-    margin-top: 15px;
-    border-radius: 6px;
-    padding: 15px;
-}
-
-.branch-group {
-    background: #e8f4fc;
-}
-
-.outlet-group {
-    background: #e0f7fa;
-}
+.branch-group{background:#e8f4fc}
+.outlet-group{background:#e0f7fa}
+.riser-group{background:#fff3cd}
 
 /* Результаты */
-.output-section {
-    margin-top: 25px;
-}
+.output-section{margin-top:25px}
+.result-box{background:#f8f9fa;border-radius:8px;padding:20px;border:2px solid var(--primary-green)}
+#calculation-result p{margin:10px 0; line-height:1.5}
+#calculation-result p strong{color:var(--primary-green)}
+#components-list{margin-top:20px}
+.component-item{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #eee;font-size:15px}
+.component-item:last-child{border-bottom:none}
+#total-price{margin-top:20px;padding-top:20px;border-top:3px solid var(--primary-green);font-size:18px;font-weight:600;color:var(--text-color)}
 
-.result-box {
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 20px;
-    border: 2px solid var(--primary-green);
-}
+.hint{margin:8px 0 0 0;color:#6b6b6b;font-size:12px}
 
-#calculation-result p {
-    margin: 10px 0;
-    line-height: 1.5;
-}
+.footer{text-align:center;margin-top:20px;padding:15px;font-size:14px;color:#555}
 
-#calculation-result p strong {
-    color: var(--primary-green);
+/* Мобила */
+@media (max-width:1100px){
+  .configurator-container{grid-template-columns:1fr;grid-template-rows:auto 1fr;height:auto}
+  .configurator-form{border-right:0;border-bottom:3px solid var(--primary-green)}
+  .splitter{display:none}
+  .drawing-section{min-height:50vh}
 }
-
-#components-list {
-    margin-top: 20px;
-}
-
-.component-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid #eee;
-    font-size: 15px;
-}
-
-.component-item:last-child {
-    border-bottom: none;
-}
-
-#total-price {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 3px solid var(--primary-green);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-color);
-}
-
-/* Чертёж */
-#busbar-canvas {
-    background: #fff;
-    border: 2px solid var(--primary-green);
-    border-radius: 8px;
-    width: 100%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.brand {
-    font-size: 36px;
-    line-height: 1.2;
-    font-weight: bold;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-.brand-systeme {
-    color: #2c3e50;
-}
-
-.brand-electric {
-    color: #27ae60; /* фирменный зеленый */
-}
-
-.footer {
-    text-align: center;
-    margin-top: 30px;
-    padding: 15px;
-    font-size: 14px;
-    color: #555;
-}
-
