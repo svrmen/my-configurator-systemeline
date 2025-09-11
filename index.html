@@ -1,206 +1,335 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Конфигуратор шинопровода Systemeline B</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Конфигуратор шинопровода Systemeline B — План/Изометрия + Вертикали</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <!-- Логотип -->
-    <header class="header">
-        <h1 class="brand">
-            <span class="brand-systeme">Systeme</span><br>
-            <span class="brand-electric">Electric</span>
-        </h1>
-    </header>
+<header class="header">
+  <h1 class="brand">
+    <span class="brand-systeme">Systeme</span><br/>
+    <span class="brand-electric">Electric</span>
+  </h1>
+</header>
 
-    <div class="configurator-container">
-        <div class="configurator-form">
-            <h2>Конфигуратор шинопровода Systemeline B</h2>
-            
-            <div class="input-group">
-                <label for="project-name">Наименование проекта:</label>
-                <input type="text" id="project-name" placeholder="Введите название проекта" required>
-            </div>
-            
-            <div class="input-section">
-                <form id="busbar-form">
-                    <div class="error-message"></div>
-                    
-                    <div class="input-group">
-                        <label for="current">Номинальный ток (A):</label>
-                        <select id="current" required>
-                            <option value="400">400</option>
-                            <option value="500">500</option>
-                            <option value="630">630</option>
-                            <option value="800">800</option>
-                            <option value="1000">1000</option>
-                            <option value="1250">1250</option>
-                            <option value="1600">1600</option>
-                            <option value="2000">2000</option>
-                            <option value="2500">2500</option>
-                            <option value="3200">3200</option>
-                            <option value="4000">4000</option>
-                            <option value="5000">5000</option>
-                            <option value="6300" class="copper-only">6300</option>
-                        </select>
-                    </div>
+<div class="configurator-container" id="split-root">
+  <!-- Левая панель (форма) -->
+  <div class="configurator-form">
+    <h2>Конфигуратор шинопровода Systemeline B</h2>
 
-                    <div class="input-group">
-                        <label for="material">Материал проводника:</label>
-                        <select id="material" required>
-                            <option value="aluminum">Алюминий</option>
-                            <option value="copper">Медь</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="start-point">Начальная точка:</label>
-                        <select id="start-point" required>
-                            <option value="none">Нет</option>
-                            <option value="transformer">Трансформатор</option>
-                            <option value="grsh">ГРЩ</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="end-point">Конечная точка основной трассы:</label>
-                        <select id="end-point" required>
-                            <option value="none">Нет</option>
-                            <option value="transformer">Трансформатор</option>
-                            <option value="grsh">ГРЩ</option>
-                            <option value="endcap">Концевая заглушка</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="total-length">Общая длина основной трассы (м):</label>
-                        <input type="number" id="total-length" min="0.4" max="100" step="0.1" value="10" required>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="mounting-step">Шаг креплений (м):</label>
-                        <input type="number" id="mounting-step" min="0.5" max="3" step="0.1" value="1" required>
-                    </div>
-
-                    <div id="segments-container">
-                        <div class="segment-input" data-id="1">
-                            <label>Сегмент 1 (длина, м):</label>
-                            <input type="number" class="segment-length" min="0.4" max="50" step="0.1" value="10" required>
-                            
-                            <label>Тип блока после сегмента:</label>
-                            <select class="block-type">
-                                <option value="none">Нет</option>
-                                <option value="angle">Угловой поворот</option>
-                                <option value="tee">Т-образный отвод</option>
-                                <option value="outlet">Отводной блок с выключателем</option>
-                            </select>
-                            
-                            <div class="direction-group" style="display: none;">
-                                <label>Направление:</label>
-                                <select class="direction">
-                                    <option value="right">Вправо</option>
-                                    <option value="left">Влево</option>
-                                    <option value="up">Вверх</option>
-                                    <option value="down">Вниз</option>
-                                </select>
-                                
-                                <label class="angle-label">Угол (°):</label>
-                                <input type="number" class="angle" min="0" max="90" value="90" disabled>
-                            </div>
-                            
-                            <div class="branch-group" style="display: none; margin-top: 10px; padding: 10px; background: #e8f4fc; border-radius: 4px;">
-                                <h4>Ответвление:</h4>
-                                <div class="input-group">
-                                    <label>Длина ответвления (м):</label>
-                                    <input type="number" class="branch-length" min="0.4" max="50" step="0.1" value="5">
-                                </div>
-                                
-                                <div class="input-group">
-                                    <label>Конечная точка ответвления:</label>
-                                    <select class="branch-end-point">
-                                        <option value="none">Нет</option>
-                                        <option value="transformer">Трансформатор</option>
-                                        <option value="grsh">ГРЩ</option>
-                                        <option value="endcap">Концевая заглушка</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="outlet-group" style="display: none; margin-top: 10px; padding: 10px; background: #e0f7fa; border-radius: 4px;">
-                                <h4>Отводной блок с выключателем:</h4>
-                                <div class="input-group">
-                                    <label>Номинал блока (A):</label>
-                                    <select class="outlet-current">
-                                        <option value="125">125</option>
-                                        <option value="160">160</option>
-                                        <option value="250">250</option>
-                                        <option value="400">400</option>
-                                        <option value="500">500</option>
-                                        <option value="630">630</option>
-                                        <option value="800">800</option>
-                                        <option value="1000">1000</option>
-                                        <option value="1250">1250</option>
-                                        <option value="1600">1600</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <button type="button" id="add-segment">+ Добавить сегмент</button>
-                        <button type="button" id="remove-segment">- Удалить сегмент</button>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="ip">Степень защиты:</label>
-                        <select id="ip" required>
-                            <option value="IP55">IP55</option>
-                            <option value="IP65">IP65</option>
-                            <option value="IP68">IP68</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="fireproof">Огнестойкое исполнение:</label>
-                        <select id="fireproof" required>
-                            <option value="no">Нет</option>
-                            <option value="yes">Да (180 мин при 550°C)</option>
-                        </select>
-                    </div>
-
-                    <button type="submit">Рассчитать</button>
-                </form>
-            </div>
-
-            <div class="output-section">
-                <div class="result-box">
-                    <h3>Результаты подбора:</h3>
-                    <div id="calculation-result"></div>
-                    <div id="components-list"></div>
-                    <div id="total-price"></div>
-                    
-                    <div class="input-group" style="margin-top: 20px;">
-                        <button type="button" id="export-excel">Выгрузить в Excel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="drawing-section">
-            <h3>Чертеж трассы:</h3>
-            <canvas id="busbar-canvas" width="800" height="600"></canvas>
-        </div>
+    <div class="input-group">
+      <label for="project-name">Наименование проекта:</label>
+      <input type="text" id="project-name" placeholder="Введите название проекта" required>
     </div>
 
-    <!-- Подвал -->
-    <footer class="footer">
-        <p>Разработчик: <strong>СтаниСофт</strong></p>
-    </footer>
+    <div class="input-section">
+      <form id="busbar-form">
+        <div class="error-message"></div>
 
-    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-    <script src="script.js"></script>
+        <div class="grid-2">
+          <div class="input-group">
+            <label for="current">Номинальный ток (A):</label>
+            <select id="current" required>
+              <option value="400">400</option>
+              <option value="500">500</option>
+              <option value="630">630</option>
+              <option value="800">800</option>
+              <option value="1000">1000</option>
+              <option value="1250">1250</option>
+              <option value="1600">1600</option>
+              <option value="2000">2000</option>
+              <option value="2500">2500</option>
+              <option value="3200">3200</option>
+              <option value="4000">4000</option>
+              <option value="5000">5000</option>
+              <option value="6300" class="copper-only">6300 (только медь)</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="material">Материал проводника:</label>
+            <select id="material" required>
+              <option value="aluminum">Алюминий</option>
+              <option value="copper">Медь</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="input-group">
+            <label for="start-point">Начальная точка:</label>
+            <select id="start-point" required>
+              <option value="none">Нет</option>
+              <option value="transformer">Трансформатор</option>
+              <option value="grsh">ГРЩ</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="end-point">Конечная точка основной трассы:</label>
+            <select id="end-point" required>
+              <option value="none">Нет</option>
+              <option value="transformer">Трансформатор</option>
+              <option value="grsh">ГРЩ</option>
+              <option value="endcap">Концевая заглушка</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="input-group">
+            <label for="total-length">Общая длина основной трассы (м):</label>
+            <input type="number" id="total-length" min="0.4" max="1000" step="0.1" value="10" required>
+          </div>
+
+          <div class="input-group">
+            <label for="mounting-step">Шаг креплений (гор.) (м):</label>
+            <input type="number" id="mounting-step" min="0.5" max="5" step="0.1" value="1" required>
+          </div>
+
+          <div class="input-group">
+            <label for="mounting-step-vert">Шаг креплений (верт.) (м):</label>
+            <input type="number" id="mounting-step-vert" min="0.5" max="5" step="0.1" value="1" required>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="input-group">
+            <label for="base-height">Базовая высота трассы (м):</label>
+            <input type="number" id="base-height" step="0.1" value="2.8" required>
+          </div>
+
+          <div class="input-group">
+            <label for="ip">Степень защиты:</label>
+            <select id="ip" required>
+              <option value="IP55">IP55</option>
+              <option value="IP65">IP65</option>
+              <option value="IP68">IP68</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="fireproof">Огнестойкое исполнение:</label>
+          <select id="fireproof" required>
+            <option value="no">Нет</option>
+            <option value="yes">Да (180 мин при 550°C)</option>
+          </select>
+        </div>
+
+        <!-- Начальный вертикальный участок -->
+        <div class="segment-input outlined-dashed">
+          <h4>Начальный вертикальный участок (опционально)</h4>
+          <div class="grid-3">
+            <div class="input-group">
+              <label>Тип:</label>
+              <select id="initial-block">
+                <option value="none">Нет</option>
+                <option value="riserUp">Подъём (вертикальный)</option>
+                <option value="riserDown">Спуск (вертикальный)</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Δh (м):</label>
+              <input type="number" id="initial-riser-dh" min="0.1" max="50" step="0.1" value="1.0">
+            </div>
+            <div class="input-group">
+              <label>Тип крепления:</label>
+              <select id="initial-riser-support">
+                <option value="rod">Штанга</option>
+                <option value="cable">Трос</option>
+                <option value="rack">Стойка</option>
+              </select>
+            </div>
+          </div>
+          <label><input type="checkbox" id="initial-riser-through-slab"> Проход через перекрытие</label>
+        </div>
+
+        <!-- Сегменты горизонтальной трассы -->
+        <div id="segments-container">
+          <div class="segment-input" data-id="1">
+            <label>Сегмент 1 (длина, м):</label>
+            <input type="number" class="segment-length" min="0.4" max="500" step="0.1" value="10" required>
+
+            <label>Тип блока после сегмента:</label>
+            <select class="block-type">
+              <option value="none">Нет</option>
+              <option value="angle">Угловой поворот</option>
+              <option value="tee">Т-образный отвод</option>
+              <option value="outlet">Отводной блок с выключателем</option>
+              <option value="riserUp">Подъём (вертикальный)</option>
+              <option value="riserDown">Спуск (вертикальный)</option>
+            </select>
+
+            <div class="direction-group" style="display:none">
+              <label>Направление:</label>
+              <select class="direction">
+                <option value="right">Вправо</option>
+                <option value="left">Влево</option>
+                <option value="up">Вверх</option>
+                <option value="down">Вниз</option>
+              </select>
+              <label class="angle-label">Угол (°):</label>
+              <input type="number" class="angle" min="0" max="90" value="90" disabled>
+            </div>
+
+            <div class="branch-group" style="display:none; margin-top:10px; padding:10px; background:#e8f4fc; border-radius:4px;">
+              <h4>Ответвление:</h4>
+              <div class="input-group">
+                <label>Длина ответвления (м):</label>
+                <input type="number" class="branch-length" min="0.4" max="200" step="0.1" value="5">
+              </div>
+              <div class="input-group">
+                <label>Конечная точка ответвления:</label>
+                <select class="branch-end-point">
+                  <option value="none">Нет</option>
+                  <option value="transformer">Трансформатор</option>
+                  <option value="grsh">ГРЩ</option>
+                  <option value="endcap">Концевая заглушка</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="outlet-group" style="display:none; margin-top:10px; padding:10px; background:#e0f7fa; border-radius:4px;">
+              <h4>Отводной блок с выключателем:</h4>
+              <div class="input-group">
+                <label>Номинал блока (A):</label>
+                <select class="outlet-current">
+                  <option value="125">125</option>
+                  <option value="160">160</option>
+                  <option value="250">250</option>
+                  <option value="400">400</option>
+                  <option value="500">500</option>
+                  <option value="630">630</option>
+                  <option value="800">800</option>
+                  <option value="1000">1000</option>
+                  <option value="1250">1250</option>
+                  <option value="1600">1600</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="riser-group" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:4px;">
+              <h4>Параметры подъёма/спуска:</h4>
+              <div class="grid-3">
+                <div class="input-group">
+                  <label>Δh (м):</label>
+                  <input type="number" class="riser-dh" min="0.1" max="50" step="0.1" value="1.0">
+                </div>
+                <div class="input-group">
+                  <label>Тип крепления:</label>
+                  <select class="riser-support">
+                    <option value="rod">Штанга</option>
+                    <option value="cable">Трос</option>
+                    <option value="rack">Стойка</option>
+                  </select>
+                </div>
+                <div class="input-group">
+                  <label><input type="checkbox" class="riser-through-slab"> Проход через перекрытие</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <button type="button" id="add-segment">+ Добавить сегмент</button>
+          <button type="button" id="remove-segment">- Удалить сегмент</button>
+        </div>
+
+        <!-- Конечный вертикальный участок -->
+        <div class="segment-input outlined-dashed">
+          <h4>Конечный вертикальный участок (опционально)</h4>
+          <div class="grid-3">
+            <div class="input-group">
+              <label>Тип:</label>
+              <select id="final-block">
+                <option value="none">Нет</option>
+                <option value="riserUp">Подъём (вертикальный)</option>
+                <option value="riserDown">Спуск (вертикальный)</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Δh (м):</label>
+              <input type="number" id="final-riser-dh" min="0.1" max="50" step="0.1" value="1.0">
+            </div>
+            <div class="input-group">
+              <label>Тип крепления:</label>
+              <select id="final-riser-support">
+                <option value="rod">Штанга</option>
+                <option value="cable">Трос</option>
+                <option value="rack">Стойка</option>
+              </select>
+            </div>
+          </div>
+          <label><input type="checkbox" id="final-riser-through-slab"> Проход через перекрытие</label>
+          <p class="hint">Переходы H↔V учитываются угловыми секциями автоматически.</p>
+        </div>
+
+        <button type="submit">Рассчитать</button>
+      </form>
+    </div>
+
+    <div class="output-section">
+      <div class="result-box">
+        <h3>Результаты подбора:</h3>
+        <div id="calculation-result"></div>
+        <div id="components-list"></div>
+        <div id="total-price"></div>
+
+        <div class="input-group" style="margin-top:20px;">
+          <button type="button" id="export-excel">Выгрузить в Excel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Сплиттер -->
+  <div class="splitter" id="splitter" title="Потяните, чтобы изменить ширину"></div>
+
+  <!-- Правая панель (чертёж) -->
+  <div class="drawing-section">
+    <div class="canvas-toolbar">
+      <div class="mode-switch">
+        <label>Режим вида:</label>
+        <button class="tool-btn" data-action="mode-plan">План</button>
+        <button class="tool-btn" data-action="mode-iso">Изометрия</button>
+      </div>
+      <div class="tools">
+        <button class="tool-btn" data-action="zoom-in" title="Увеличить">+</button>
+        <button class="tool-btn" data-action="zoom-out" title="Уменьшить">−</button>
+        <button class="tool-btn" data-action="reset" title="Масштаб 1:1">1:1</button>
+        <button class="tool-btn" data-action="fit" title="Подогнать к окну">Подогнать</button>
+        <button class="tool-btn" data-action="grid" title="Сетка">Сетка</button>
+        <button class="tool-btn" data-action="fullscreen" title="Во весь экран">⛶</button>
+        <button class="tool-btn" data-action="png" title="Скачать PNG">PNG</button>
+      </div>
+      <span class="tool-hint">Колесо мыши — зум, ЛКМ — панорама</span>
+    </div>
+
+    <div class="legend" id="height-legend">
+      <span class="legend-title">Уровни высоты:</span>
+      <span class="key" data-level="base"><i></i> База</span>
+      <span class="key" data-level="above"><i></i> Выше базы</span>
+      <span class="key" data-level="below"><i></i> Ниже базы</span>
+    </div>
+
+    <div class="canvas-wrapper" id="canvas-wrapper">
+      <canvas id="busbar-canvas"></canvas>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>Разработчик: <strong>СтаниСофт</strong></p>
+</footer>
+
+<!-- ExcelJS + FileSaver -->
+<script src="https://cdn.jsdelivr.net/npm/exceljs@4.3.0/dist/exceljs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+<script src="script.js"></script>
 </body>
 </html>
